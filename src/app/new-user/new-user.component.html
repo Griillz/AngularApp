@@ -1,0 +1,79 @@
+<form>
+  <div class="form-group">
+    <label for="userId">User Id</label>
+    <input
+      name="userId"
+      [(ngModel)]="newUser.userId"
+      class="form-control"
+      id="userId"
+      aria-describedby="userIdHelp"
+      placeholder="tony17"
+    />
+    <small id="userIdHelp" class="form-text text-muted"
+      >Enter the user Id you would like!</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      name="firstName"
+      [(ngModel)]="newUser.firstName"
+      class="form-control"
+      id="firstName"
+      aria-describedby="firstNameHelp"
+      placeholder="Tony"
+    />
+    <small id="firstNamelHelp" class="form-text text-muted"
+      >Enter your first Name!</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      name="lastName"
+      [(ngModel)]="newUser.lastName"
+      class="form-control"
+      id="lastName"
+      aria-describedby="lastNameHelp"
+      placeholder="Jones"
+    />
+    <small id="userIdHelp" class="form-text text-muted"
+      >Enter your last name!</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="emailAddress">Email address</label>
+    <input
+      name="emailAddress"
+      [(ngModel)]="newUser.emailAddress"
+      class="form-control"
+      id="emailAddress"
+      aria-describedby="userIdHelp"
+      placeholder="tonyjones@gmail.com"
+    />
+    <small id="emailAddressHelp" class="form-text text-muted"
+      >Enter your Email Address</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      name="password"
+      [(ngModel)]="newUser.password"
+      type="password"
+      class="form-control"
+      id="password"
+      aria-describedby="passwordHelp"
+      placeholder="password12345"
+    />
+    <small id="passwordHelp" class="form-text text-muted"
+      >Enter the password you would like!</small
+    >
+  </div>
+  <div *ngIf="errorMsg !== ''" class="alert alert-danger" role="alert">
+    {{ errorMsg }}
+  </div>
+  <button type="submit" (click)="CreateNewUser()" class="btn btn-secondary">
+    Create Account
+  </button>
+</form>
