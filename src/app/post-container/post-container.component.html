@@ -1,0 +1,9 @@
+<div *ngIf="returnPostArr.length >= 1">
+  <app-post
+    *ngFor="let post of returnPostArr"
+    [userId]="post.userId"
+    [content]="post.content"
+    [headerImage]="post.headerImage"
+  ></app-post>
+</div>
+<div *ngIf="returnPostArr.length < 1">No Posts Found!</div>

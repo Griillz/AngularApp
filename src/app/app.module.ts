@@ -11,6 +11,9 @@ import { UserService } from './auth/services/user.service';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SecretComponent } from './secret/secret.component';
+import { CreatepostComponent } from './createpost/createpost.component';
+import { PostComponent } from './post/post.component';
+import { PostContainerComponent } from './post-container/post-container.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { SecretComponent } from './secret/secret.component';
     LoginComponent,
     HomeComponent,
     SecretComponent,
+    CreatepostComponent,
+    PostComponent,
+    PostContainerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [UserService],

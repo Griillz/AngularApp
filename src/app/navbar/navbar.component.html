@@ -26,6 +26,12 @@
       <a class="nav-item nav-link" *ngIf="loggedIn" (click)="Logout()"
         >Logout</a
       >
+      <a
+        class="nav-item nav-link"
+        *ngIf="loggedIn"
+        [routerLink]="['createpost']"
+        >Create Post</a
+      >
     </div>
   </div>
 </nav>

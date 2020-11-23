@@ -1,0 +1,45 @@
+<h1 class="text-center">
+  <form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        name="title"
+        [(ngModel)]="title"
+        class="form-control"
+        id="title"
+        aria-describedby="titleHelp"
+        placeholder="Title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <input
+        name="content"
+        [(ngModel)]="content"
+        class="form-control"
+        id="content"
+        aria-describedby="contentHelp"
+        placeholder="Content"
+      />
+    </div>
+    <div class="form-group">
+      <label for="headerimage">Header Image</label>
+      <input
+        name="headerImage"
+        [(ngModel)]="headerImage"
+        class="form-control"
+        id="headerimage"
+        aria-describedby="headerimageHelp"
+        placeholder="Image"
+      />
+    </div>
+    <div class="col-sm">
+      <div *ngIf="errorMsg !== ''" class="alert alert-danger" role="alert">
+        {{ errorMsg }}
+      </div>
+      <button (click)="CreateNewPost()" type="submit" class="btn btn-success">
+        Create Post
+      </button>
+    </div>
+  </form>
+</h1>

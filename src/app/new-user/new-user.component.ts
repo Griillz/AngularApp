@@ -14,11 +14,6 @@ export class NewUserComponent implements OnInit {
   errorMsg = '';
   ngOnInit(): void {
     this.newUser = new User();
-    // this.newUser.userId = 'Tony17';
-    // this.newUser.firstName = 'Tony';
-    // this.newUser.lastName = 'Jones';
-    // this.newUser.emailAddress = 'tonyjones@gmail.com';
-    // this.newUser.password = 'tonyjones12345';
   }
 
   CreateNewUser() {

@@ -4,6 +4,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SecretComponent } from './secret/secret.component';
+import { CreatepostComponent } from './createpost/createpost.component';
 import { AuthGuardService } from './auth/services/auth-guard.service';
 
 const routes: Routes = [
@@ -14,11 +15,15 @@ const routes: Routes = [
   {
     path: 'auth',
     component: SecretComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'createpost',
+    component: CreatepostComponent,
   },
   {
     path: 'home',
