@@ -5,4 +5,5 @@ export class Returnpost {
   lastUpdated: string = '';
   postId: number = 0;
   userId: string = '';
+  currentUserBoolean: boolean = true;
 }
