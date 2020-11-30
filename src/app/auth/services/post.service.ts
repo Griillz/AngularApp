@@ -23,4 +23,20 @@ export class PostService {
   getPosts() {
     return this.http.get(`${this.BASE_URL}/Posts`);
   }
+
+  UpdatePost(newPost: Post, postId: string) {
+    let token = JSON.parse(localStorage.getItem('Auth')).token;
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.patch<Post>(`${this.BASE_URL}/Posts/${postId}`, newPost, {
+      headers: headers,
+    });
+  }
+
+  DeletePost(postId: string) {
+    let token = JSON.parse(localStorage.getItem('Auth')).token;
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.delete(`${this.BASE_URL}/Posts/${postId}`, {
+      headers: headers,
+    });
+  }
 }

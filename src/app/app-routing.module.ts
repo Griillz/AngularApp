@@ -6,16 +6,12 @@ import { HomeComponent } from './home/home.component';
 import { SecretComponent } from './secret/secret.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { AuthGuardService } from './auth/services/auth-guard.service';
+import { EditpostComponent } from './editpost/editpost.component';
 
 const routes: Routes = [
   {
     path: 'new-user',
     component: NewUserComponent,
-  },
-  {
-    path: 'auth',
-    component: SecretComponent,
-    canActivate: [AuthGuardService],
   },
   {
     path: 'login',
@@ -28,6 +24,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'editpost',
+    component: EditpostComponent,
   },
   {
     path: '',

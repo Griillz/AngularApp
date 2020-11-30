@@ -14,7 +14,6 @@ import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 export class PostContainerComponent implements OnInit {
   constructor(private postSvc: PostService, private router: Router) {}
   errorMsg = '';
-  currentUserId: string = '';
   postArr = [];
   returnPostArr = [];
   ngOnInit(): void {
@@ -40,9 +39,6 @@ export class PostContainerComponent implements OnInit {
   }
 
   generatePosts() {
-    if (localStorage.getItem('userId') !== null) {
-      this.currentUserId = localStorage.getItem('userId');
-    }
     this.postArr.forEach((element) => {
       let returnpost = new Returnpost();
       (returnpost.title = element['title']),
@@ -51,18 +47,8 @@ export class PostContainerComponent implements OnInit {
         (returnpost.lastUpdated = element['lastUpdated'].split('T', '1')),
         (returnpost.postId = element['postId']),
         (returnpost.userId = element['userId']),
-        (returnpost.currentUserBoolean = this.checkUser(returnpost.userId));
-      this.returnPostArr.push(returnpost);
+        this.returnPostArr.push(returnpost);
     });
     console.log(this.returnPostArr);
-  }
-
-  checkUser(postUserId: string) {
-    console.log(this.currentUserId);
-    console.log(postUserId);
-    if (this.currentUserId === postUserId) {
-      return true;
-    }
-    return false;
   }
 }

@@ -11,8 +11,8 @@
               alt=""
             />
             <div class="media-body ml-3">
-              <h1>{{ userId }}</h1>
-              <h1>{{ title }}</h1>
+              <h1>Username: {{ userId }}</h1>
+              <h1>Title: {{ title }}</h1>
             </div>
             <div class="text-muted small ml-3">
               <div>
@@ -30,21 +30,22 @@
           class="card-footer d-flex flex-wrap flex-row-reverse align-items-center px-0 pt-0 pb-3"
         >
           <div class="px-4 pt-3">
-            <div *ngIf="currentUser">
-              <button
-                type="button"
-                (click)="EditPost()"
-                class="btn btn-primary"
-              >
-                <i class="ion ion-md-create"></i>&nbsp; Edit
-              </button>
-              <button
-                type="button"
-                (click)="DeletePost()"
-                class="btn btn-secondary"
-              >
-                <i class="ion ion-md-create"></i>&nbsp; Delete
-              </button>
+            <button type="button" (click)="EditPost()" class="btn btn-primary">
+              <i class="ion ion-md-create"></i>&nbsp; Edit
+            </button>
+            <button
+              type="button"
+              (click)="DeletePost()"
+              class="btn btn-secondary"
+            >
+              <i class="ion ion-md-create"></i>&nbsp; Delete
+            </button>
+            <div
+              *ngIf="errorMsg !== ''"
+              class="alert alert-danger"
+              role="alert"
+            >
+              {{ errorMsg }}
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { UserService } from '../services/user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from '../services/user.service';
 export class LoginComponent implements OnInit {
   constructor(
     private userSvc: UserService,
-    private authSvc: AuthGuardService
+    private authSvc: AuthGuardService,
+    private router: Router
   ) {}
   userId: string = '';
   password: string = '';
@@ -23,8 +25,8 @@ export class LoginComponent implements OnInit {
         console.log(returnedToken);
         this.authSvc.SetUserLoggedIn(returnedToken);
         localStorage.setItem('Auth', JSON.stringify(returnedToken));
-        localStorage.setItem('userId', this.userId);
         this.errorMsg = '';
+        this.router.navigate(['/home']);
       },
       (error) => {
         console.log(error);

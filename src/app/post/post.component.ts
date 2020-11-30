@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from '../auth/services/post.service';
 import { Post } from '../auth/models/post.model';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 
 @Component({
@@ -17,6 +18,8 @@ export class PostComponent implements OnInit {
   @Input() lastUpdated: string = '';
   @Input() headerImage: string = '';
   @Input() currentUser: boolean = false;
+  @Input() postId: string = '';
+  errorMsg: string = '';
 
   ngOnInit(): void {}
 
@@ -26,11 +29,56 @@ export class PostComponent implements OnInit {
   }
 
   EditPost() {
-    console.log(this.userId);
-    console.log('fisdgfiusegfuisegfuisegfuigse');
+    if (this.checkUser(this.userId, this.getCurrentUser())) {
+      this.router.navigate(['/editpost', { postId: this.postId }]);
+    } else {
+      window.alert('You are only allowed to edit your own posts!');
+    }
   }
 
   DeletePost() {
-    console.log(this.userId);
+    if (this.checkUser(this.userId, this.getCurrentUser())) {
+      if (confirm('Are you sure you want to delete this post?')) {
+        this.postSvc.DeletePost(this.postId).subscribe(
+          (returnedPost) => {
+            this.router.navigate(['/home']);
+            this.errorMsg = '';
+          },
+          (error) => {
+            console.log(error);
+            this.errorMsg = error.error.messsage;
+          }
+        );
+      }
+    } else {
+      window.alert('You are only allowed to delete your own posts!');
+    }
+  }
+
+  getCurrentUser() {
+    let token;
+    let payload;
+    if (localStorage.getItem('Auth') != null) {
+      token = JSON.parse(localStorage.getItem('Auth')).token;
+    } else {
+      return false;
+    }
+    payload = this.decodeToken(token);
+    return payload['UserData']['userId'];
+  }
+
+  decodeToken(token: string) {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
+
+  checkUser(postUserId: string, currentUserId: string) {
+    if (currentUserId === postUserId) {
+      return true;
+    }
+    return false;
   }
 }

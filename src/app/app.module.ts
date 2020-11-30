@@ -14,6 +14,7 @@ import { SecretComponent } from './secret/secret.component';
 import { CreatepostComponent } from './createpost/createpost.component';
 import { PostComponent } from './post/post.component';
 import { PostContainerComponent } from './post-container/post-container.component';
+import { EditpostComponent } from './editpost/editpost.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PostContainerComponent } from './post-container/post-container.componen
     CreatepostComponent,
     PostComponent,
     PostContainerComponent,
+    EditpostComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [UserService],
